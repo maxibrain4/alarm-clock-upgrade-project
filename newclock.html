@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>alarm clock</title>
+	<style>
+		#body{
+         width:70%;
+         height:400px;
+         background-color:maroon;
+         margin-left:70px;
+         border-radius:85px;
+		}
+		#min{
+		 width:40px;
+		 color:green;
+		}
+		#hr{
+          width:40px;
+		}
+		#ses{
+          width:40px;
+		}
+		#clock{
+         font-size:100px;
+         margin-left:200px
+
+		}
+		#alarm{
+			margin-left:300px
+		}
+		p{
+			font-size:50px;
+			margin-left:300px;
+
+		}
+
+	</style>
+<script>
+	var a = new Audio('alarm.mp3');
+	function showtime() {
+		    var date = new Date();
+			var hours =  date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            var session = "AM";
+             if(hours == 0){
+             hours = 12;
+            }
+            if(hours > 12){
+            	hours = hours - 12;
+              session ="PM"; }
+
+              hours = (hours<10)? "0" + hours:hours;
+              minutes = (minutes<10)? "0" + minutes:minutes; 
+              seconds = (seconds<10)? "0" + seconds:seconds;
+
+             var time = hours + ":" + minutes + ":" + seconds +  session;
+            document.getElementById('clock').innerText = time;
+            document.getElementById('clock').textContext = time;
+            setTimeout("showtime()", 1000)
+            if(hr.value == hours && min.value == minutes && ses.value == session){
+            	a.play()
+            }
+		}
+		function snooze() {
+		a.pause();
+        min.value = parseInt(min.value)+ 3;
+        showtime();
+
+		}
+		function refresh() {
+		min.value = "00";
+		hr.value = "00";
+		ses.value = ""
+		}
+	 
+
+</script>
+</head>
+<body onload="showtime()">
+<div id="body">
+<p>alarm clock</p>
+<div id="clock">
+</div>
+<div id="alarm">
+HR:<input type="" name="" value="00" id="hr">
+MIN:<input type="" name=""  value="00" id="min">
+SES:<input type="" name="" id="ses"> <br><br>
+
+<input type="button" name="" value="snooze" onclick="snooze()"> <input type="button" id="button" name="" onclick="refresh()" value="refresh">
+</div>
+</div>
+</body>
+</html>
